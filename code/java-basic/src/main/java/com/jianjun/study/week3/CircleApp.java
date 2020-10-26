@@ -40,7 +40,7 @@ public class CircleApp {
         return Math.sqrt (diffrenceX*diffrenceX+diffrentY*diffrentY);
     }
 
-    
+
     private static String isInCircle(Point point,Circle circle){
         String result = "";
         Point center  = new Point(circle.getX(),circle.getY());
