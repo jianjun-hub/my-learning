@@ -17,4 +17,6 @@ public abstract class BaseEmployee {
      * @return int
      */
     public abstract int getSalary();
+
+    
 }
