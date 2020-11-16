@@ -22,10 +22,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75aa6509-84b5-4329-a69c-f789bf2c91d7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jianjun/study/week6/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+    <list default="true" id="75aa6509-84b5-4329-a69c-f789bf2c91d7" name="Default Changelist" comment="week7">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jianjun/study/week7/ListTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jianjun/study/week7/MapTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jianjun/study/week7/SetTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jianjun/study/week7/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jianjun/study/week6/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jianjun/study/week6/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/jianjun/study/week6/LoginFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/jianjun/study/week6/LoginFrame.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,13 +77,52 @@
       <recent name="com.jianjun.study.week5" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.LoginFrame">
+  <component name="RunManager" selected="Application.MapTest">
+    <configuration name="ListTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jianjun.study.week7.ListTest" />
+      <module name="java-basic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jianjun.study.week7.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LoginFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.jianjun.study.week6.LoginFrame" />
       <module name="java-basic" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.jianjun.study.week6.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MapTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jianjun.study.week7.MapTest" />
+      <module name="java-basic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jianjun.study.week7.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SetTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jianjun.study.week7.SetTest" />
+      <module name="java-basic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jianjun.study.week7.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -100,8 +143,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MapTest" />
+        <item itemvalue="Application.ListTest" />
+        <item itemvalue="Application.SetTest" />
         <item itemvalue="Application.LoginFrame" />
         <item itemvalue="Application.TestBookService" />
       </list>
@@ -141,6 +198,7 @@
       <workItem from="1604899386398" duration="11622000" />
       <workItem from="1604967800122" duration="47000" />
       <workItem from="1605504286639" duration="37000" />
+      <workItem from="1605504380194" duration="9351000" />
     </task>
     <servers />
   </component>
@@ -159,35 +217,39 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="week7" />
+    <option name="LAST_COMMIT_MESSAGE" value="week7" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="503" y="232" key="#Notifications" timestamp="1604368072951">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="503" y="232" key="#Notifications/0.0.1536.824@0.0.1536.824" timestamp="1604368072951" />
-    <state x="0" y="231" key="#com.intellij.ide.util.MemberChooser" timestamp="1604911976537">
+    <state x="0" y="231" key="#com.intellij.ide.util.MemberChooser" timestamp="1605510655592">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="0" y="231" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1604911976537" />
+    <state x="0" y="231" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1605510655592" />
     <state x="872" y="203" key="FileChooserDialogImpl" timestamp="1604967857715">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="872" y="203" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1604967857715" />
-    <state width="1206" height="44" key="GridCell.Tab.0.bottom" timestamp="1604912502220">
+    <state width="1206" height="250" key="GridCell.Tab.0.bottom" timestamp="1605516632264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1206" height="44" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604912502220" />
-    <state width="1206" height="44" key="GridCell.Tab.0.center" timestamp="1604912502220">
+    <state width="1206" height="250" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605516632264" />
+    <state width="1206" height="250" key="GridCell.Tab.0.center" timestamp="1605516632264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1206" height="44" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604912502220" />
-    <state width="1206" height="44" key="GridCell.Tab.0.left" timestamp="1604912502220">
+    <state width="1206" height="250" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605516632264" />
+    <state width="1206" height="250" key="GridCell.Tab.0.left" timestamp="1605516632264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1206" height="44" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604912502220" />
-    <state width="1206" height="44" key="GridCell.Tab.0.right" timestamp="1604912502220">
+    <state width="1206" height="250" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605516632264" />
+    <state width="1206" height="250" key="GridCell.Tab.0.right" timestamp="1605516632264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1206" height="44" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604912502220" />
+    <state width="1206" height="250" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605516632264" />
     <state x="194" y="107" key="SettingsEditor" timestamp="1605504356504">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
