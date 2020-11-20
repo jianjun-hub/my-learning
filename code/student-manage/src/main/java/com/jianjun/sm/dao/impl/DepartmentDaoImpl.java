@@ -38,4 +38,17 @@ public class DepartmentDaoImpl  implements DepartmentDao {
         jdbcUtil.closeConnection();
         return  departmentList;
     }
+
+    @Override
+    public void delDep(int id) throws SQLException {
+        JdbcUtil jdbcUtil = JdbcUtil.getInitJdbcUtil();
+        Connection connection = jdbcUtil.getConnection();
+        String Sql = "DELETE FROM t_department WHERE id = ?";
+        PreparedStatement pstmt = connection.prepareStatement(Sql);
+        pstmt.setInt(1,id);
+        pstmt.executeUpdate();
+        pstmt.close();
+        jdbcUtil.closeConnection();
+    }
+
 }

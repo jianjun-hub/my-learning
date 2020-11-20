@@ -35,6 +35,7 @@ public class AdminLoginFrame extends JFrame {
             if (resultEntity.getCode() == 0) {
                 //关闭登录页面，进入主界面
                 this.dispose();
+                new MainFrame();
             } else {
                 accountField.setText("");
                 passwordField.setText("");

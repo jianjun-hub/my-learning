@@ -16,6 +16,7 @@ import java.sql.SQLException;
  * @Date 2020/11/16
  **/
 public class AdminDaoImpl implements AdminDao {
+    @Override
     public Admin finAdminByAccount(String account) throws SQLException {
         JdbcUtil jdbcUtil = JdbcUtil.getInitJdbcUtil();
         Connection connection = jdbcUtil.getConnection();
@@ -36,8 +37,6 @@ public class AdminDaoImpl implements AdminDao {
             admin.setAccount(adminAccount);
             admin.setPassword(password);
             admin.setAdminName(adminName);
-
-
         }
 
         rs.close();

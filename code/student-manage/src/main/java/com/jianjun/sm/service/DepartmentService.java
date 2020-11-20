@@ -11,4 +11,11 @@ public interface DepartmentService {
      * @return List<Department>
      */
     List<Department> selectAll();
+
+    /**
+     * 删除院系
+     * @param id 院系id
+     * @return int
+     */
+    void delDep(int id);
 }

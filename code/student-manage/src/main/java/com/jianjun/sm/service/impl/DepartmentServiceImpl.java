@@ -26,4 +26,13 @@ public class DepartmentServiceImpl   implements DepartmentService {
         }
         return departmentList;
     }
+
+    @Override
+    public void delDep(int id) {
+        try {
+            departmentDao.delDep(id);
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 }

@@ -19,6 +19,7 @@ import java.sql.SQLException;
 public class AdminServiceImpl implements AdminService {
     private final AdminDao adminDao = DaoFactory.getAdminDaoInstance();
 
+    @Override
     public ResultEntity adminLogin(String account, String password) {
         ResultEntity resultEntity;
         Admin admin = null;
