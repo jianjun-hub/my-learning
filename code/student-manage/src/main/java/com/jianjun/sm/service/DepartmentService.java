@@ -18,4 +18,11 @@ public interface DepartmentService {
      * @return int
      */
     void delDep(int id);
+
+
+    /**
+     * @param department 入参
+     * @return int
+     */
+    int addDepartment(Department department);
 }

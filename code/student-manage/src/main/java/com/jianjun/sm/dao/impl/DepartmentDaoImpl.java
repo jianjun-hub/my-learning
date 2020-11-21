@@ -17,7 +17,7 @@ import java.util.List;
  * @Author DARKW
  * @Date 2020/11/17
  **/
-public class DepartmentDaoImpl  implements DepartmentDao {
+public class DepartmentDaoImpl implements DepartmentDao {
     @Override
     public List<Department> getAll() throws SQLException {
         JdbcUtil jdbcUtil = JdbcUtil.getInitJdbcUtil();
@@ -26,7 +26,7 @@ public class DepartmentDaoImpl  implements DepartmentDao {
         PreparedStatement pstmt = connection.prepareStatement(Sql);
         ResultSet rs = pstmt.executeQuery();
         List<Department> departmentList = new ArrayList<>();
-        while (rs.next()){
+        while (rs.next()) {
             Department department = new Department();
             department.setId(rs.getInt("id"));
             department.setDepartmentName(rs.getString("department_name"));
@@ -36,7 +36,7 @@ public class DepartmentDaoImpl  implements DepartmentDao {
         rs.close();
         pstmt.close();
         jdbcUtil.closeConnection();
-        return  departmentList;
+        return departmentList;
     }
 
     @Override
@@ -45,10 +45,25 @@ public class DepartmentDaoImpl  implements DepartmentDao {
         Connection connection = jdbcUtil.getConnection();
         String Sql = "DELETE FROM t_department WHERE id = ?";
         PreparedStatement pstmt = connection.prepareStatement(Sql);
-        pstmt.setInt(1,id);
+        pstmt.setInt(1, id);
         pstmt.executeUpdate();
         pstmt.close();
         jdbcUtil.closeConnection();
     }
+
+    @Override
+    public int insertDepartment(Department department) throws SQLException {
+        JdbcUtil jdbcUtil = JdbcUtil.getInitJdbcUtil();
+        Connection connection = jdbcUtil.getConnection();
+        String sql = "insert into t_department(department_name,logo) values(?,?) ";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        pstmt.setString(1,department.getDepartmentName());
+        pstmt.setString(2,department.getLogo());
+        int n = pstmt.executeUpdate();
+        pstmt.close();
+        connection.close();
+        return  n;
+    }
+
 
 }
