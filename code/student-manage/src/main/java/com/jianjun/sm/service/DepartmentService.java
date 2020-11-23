@@ -17,7 +17,7 @@ public interface DepartmentService {
      * @param id 院系id
      * @return int
      */
-    void delDep(int id);
+    int delDep(int id);
 
 
     /**

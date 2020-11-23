@@ -19,9 +19,10 @@ public interface DepartmentDao {
      * 删除院系
      *
      * @param id 院系id
+     * @return int
      * @throws SQLException 异常
      */
-    void delDep(int id) throws SQLException;
+    int delDep(int id) throws SQLException;
 
     /**
      * 新增院系

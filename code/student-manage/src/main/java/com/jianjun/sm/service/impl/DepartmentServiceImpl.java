@@ -28,12 +28,14 @@ public class DepartmentServiceImpl   implements DepartmentService {
     }
 
     @Override
-    public void delDep(int id) {
+    public int delDep(int id) {
+        int n = 0;
         try {
-            departmentDao.delDep(id);
+            n = departmentDao.delDep(id);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return n;
     }
 
     @Override

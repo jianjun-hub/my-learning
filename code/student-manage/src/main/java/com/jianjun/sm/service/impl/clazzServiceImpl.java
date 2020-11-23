@@ -27,4 +27,27 @@ public class clazzServiceImpl implements ClazzService {
         }
         return clazzList;
     }
+
+    @Override
+    public int addClazz(Clazz clazz) {
+        int n = 0;
+        try {
+            n = DaoFactory.getClazzDaoInstance().insertClazz(clazz);
+        } catch (Exception e) {
+            System.err.print("插入班级出现异常");
+        }
+        return n;
+    }
+
+    @Override
+    public int delClazz(int id) {
+        int n = 0;
+        try {
+            n = DaoFactory.getClazzDaoInstance().delClazz(id);
+        } catch (SQLException e) {
+            System.err.print("插入班级出现异常");
+        }
+        return n;
+    }
+
 }

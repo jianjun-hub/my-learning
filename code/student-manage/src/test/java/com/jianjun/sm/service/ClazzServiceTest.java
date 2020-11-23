@@ -20,4 +20,26 @@ public class ClazzServiceTest {
        List<Clazz> clazzList = ServiceFactory.getClazzServiceInstance().selectClazzById(1);
        clazzList.forEach(System.out::println);
     }
+
+    @Test
+    public void addClazz() {
+        int n = 0;
+        Clazz clazz = Clazz.builder()
+                .departmentId(5)
+                .className("软件一班")
+                .build();
+        n = ServiceFactory.getClazzServiceInstance().addClazz(clazz);
+        assertEquals(1,n);
+    }
+
+    @Test
+    public void delClazz() {
+        int n= 0;
+        try {
+            n = ServiceFactory.getClazzServiceInstance().delClazz(7);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertEquals(1,n);
+    }
 }

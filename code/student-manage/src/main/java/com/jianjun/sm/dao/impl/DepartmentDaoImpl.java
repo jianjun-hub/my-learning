@@ -40,15 +40,17 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public void delDep(int id) throws SQLException {
+    public int delDep(int id) throws SQLException {
+        int n = 0;
         JdbcUtil jdbcUtil = JdbcUtil.getInitJdbcUtil();
         Connection connection = jdbcUtil.getConnection();
         String Sql = "DELETE FROM t_department WHERE id = ?";
         PreparedStatement pstmt = connection.prepareStatement(Sql);
         pstmt.setInt(1, id);
-        pstmt.executeUpdate();
+        n = pstmt.executeUpdate();
         pstmt.close();
         jdbcUtil.closeConnection();
+        return n;
     }
 
     @Override

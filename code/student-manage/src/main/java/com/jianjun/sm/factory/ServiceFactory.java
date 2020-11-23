@@ -4,8 +4,10 @@ import com.jianjun.sm.entity.Admin;
 import com.jianjun.sm.service.AdminService;
 import com.jianjun.sm.service.ClazzService;
 import com.jianjun.sm.service.DepartmentService;
+import com.jianjun.sm.service.StudentService;
 import com.jianjun.sm.service.impl.AdminServiceImpl;
 import com.jianjun.sm.service.impl.DepartmentServiceImpl;
+import com.jianjun.sm.service.impl.StudentServiceImpl;
 import com.jianjun.sm.service.impl.clazzServiceImpl;
 
 /**
@@ -24,5 +26,8 @@ public class ServiceFactory {
     }
 
     public static ClazzService getClazzServiceInstance(){return new clazzServiceImpl();}
+
+    public static StudentService getStudentServiceInstance(){return new StudentServiceImpl();
+    }
     }
 

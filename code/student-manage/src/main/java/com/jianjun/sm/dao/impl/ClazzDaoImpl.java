@@ -41,4 +41,31 @@ public class ClazzDaoImpl implements ClazzDao {
         jdbcUtil.closeConnection();
         return clazzList;
     }
+
+    @Override
+    public int insertClazz(Clazz clazz) throws SQLException {
+        JdbcUtil jdbcUtil = JdbcUtil.getInitJdbcUtil();
+        Connection connection = jdbcUtil.getConnection();
+        String sql = "insert into t_class (department_id,class_name) values(?,?) ";
+        PreparedStatement pstmt  = connection.prepareStatement(sql);
+        pstmt.setInt(1,clazz.getDepartmentId());
+        pstmt.setString(2,clazz.getClassName());
+        int n = pstmt.executeUpdate();
+        pstmt.close();
+        jdbcUtil.closeConnection();
+        return n;
+    }
+
+    @Override
+    public int delClazz(int id) throws SQLException {
+        JdbcUtil jdbcUtil = JdbcUtil.getInitJdbcUtil();
+        Connection connection = jdbcUtil.getConnection();
+        String sql  ="delete from t_class where id = ?";
+        PreparedStatement pstmt = connection.prepareStatement(sql);
+        pstmt.setInt(1,id);
+        int n = pstmt.executeUpdate();
+        pstmt.close();
+        jdbcUtil.closeConnection();
+        return n;
+    }
 }

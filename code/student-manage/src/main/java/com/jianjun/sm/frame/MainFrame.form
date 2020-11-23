@@ -229,6 +229,7 @@
                 <constraints border-constraint="North"/>
                 <properties>
                   <background color="-13080699"/>
+                  <preferredSize width="454" height="50"/>
                 </properties>
                 <border type="none"/>
                 <children>
@@ -242,10 +243,13 @@
                       <background color="-1"/>
                       <font size="14"/>
                       <foreground color="-14078671"/>
-                      <toolTipText value="请选择班级"/>
+                      <model>
+                        <item value="请选择院系名称"/>
+                      </model>
+                      <toolTipText value=""/>
                     </properties>
                   </component>
-                  <component id="65174" class="javax.swing.JTextField" binding="searchField">
+                  <component id="65174" class="javax.swing.JTextField" binding="classNameField">
                     <constraints>
                       <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="-1"/>
@@ -256,7 +260,7 @@
                       <font size="14"/>
                     </properties>
                   </component>
-                  <component id="295e8" class="javax.swing.JButton" default-binding="true">
+                  <component id="295e8" class="javax.swing.JButton" binding="新增班级Button">
                     <constraints>
                       <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -310,14 +314,79 @@
               </splitpane>
             </children>
           </grid>
-          <grid id="37abc" binding="studentPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
+          <grid id="37abc" binding="studentPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <card name="Card3"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-1"/>
+            </properties>
             <border type="none"/>
-            <children/>
+            <children>
+              <grid id="51f0c" layout-manager="GridLayoutManager" row-count="1" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints border-constraint="North"/>
+                <properties>
+                  <background color="-13080699"/>
+                  <preferredSize width="600" height="50"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="ba31e" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="a9b2e" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="8a5" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                    </constraints>
+                    <properties/>
+                  </component>
+                  <component id="cf3b" class="javax.swing.JButton" binding="搜索Button" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="搜索"/>
+                    </properties>
+                  </component>
+                  <component id="c3db9" class="javax.swing.JButton" binding="新增Button1" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="新增"/>
+                    </properties>
+                  </component>
+                  <component id="e6f18" class="javax.swing.JButton" binding="批量导入Button" default-binding="true">
+                    <constraints>
+                      <grid row="0" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="批量导入"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="d7cf6" binding="tablePanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <background color="-1"/>
+                </properties>
+                <border type="none"/>
+                <children/>
+              </grid>
+            </children>
           </grid>
           <grid id="7b75d" binding="rewardPanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>

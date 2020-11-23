@@ -22,4 +22,30 @@ public class ClazzDaoTest {
         }
         System.out.println(clazzList);
     }
+
+    @Test
+    public void insertClazz() {
+        int n = 0;
+        Clazz clazz = Clazz.builder()
+                .departmentId(4)
+                .className("交通二班")
+                .build();
+        try {
+          n = clazzDao.insertClazz(clazz);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        assertEquals(1,n);
+    }
+
+    @Test
+    public void delClazz() {
+        int n = 0;
+        try {
+            n = clazzDao.delClazz(10);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        assertEquals(1,n);
+    }
 }

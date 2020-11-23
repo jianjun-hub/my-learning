@@ -17,8 +17,9 @@ public class Department {
     private  String departmentName;
     private String logo;
 
-     @Override
+
+    @Override
      public String toString(){
-        return departmentName;
+       return this.departmentName;
     }
 }
