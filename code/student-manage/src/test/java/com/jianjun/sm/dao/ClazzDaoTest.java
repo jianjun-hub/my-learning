@@ -5,6 +5,7 @@ import com.jianjun.sm.factory.DaoFactory;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -47,5 +48,16 @@ public class ClazzDaoTest {
             e.printStackTrace();
         }
         assertEquals(1,n);
+    }
+
+    @Test
+    public void selectAll() {
+        try {
+            List<Clazz> list= new ArrayList<>();
+            list = clazzDao.selectAll();
+            list.forEach(System.out::println);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

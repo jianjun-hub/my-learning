@@ -1,7 +1,6 @@
 package com.jianjun.sm.service;
 
 import com.jianjun.sm.entity.Clazz;
-import com.jianjun.sm.entity.ResultEntity;
 
 import java.util.List;
 
@@ -30,4 +29,13 @@ public interface ClazzService {
      * @return int
      */
     int delClazz(int id);
+
+    /**
+     * 查询所有班级
+     * @return List<Clazz>
+     */
+    List<Clazz> selectAll();
+
+
+
 }

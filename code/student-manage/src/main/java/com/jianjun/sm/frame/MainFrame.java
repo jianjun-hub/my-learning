@@ -16,10 +16,7 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumn;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.awt.*;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.util.List;
 
@@ -64,8 +61,8 @@ public class MainFrame extends JFrame {
     private JPanel classContentPanel;
     private JPanel classToolPanel;
     private JButton 新增班级Button;
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
+    private JComboBox<Department> departmentJBox;
+    private JComboBox<Clazz> clazzJBox;
     private JTextField textField1;
     private JButton 搜索Button;
     private JButton 新增Button1;
@@ -73,9 +70,10 @@ public class MainFrame extends JFrame {
     private JPanel tablePanel;
 
     private final CardLayout c;
-
     private String upLoadFileUrl;
     private File file;
+    private List<StudentVo> students;
+    private  int DepartmentId = 0;
 
 
     public MainFrame() {
@@ -96,7 +94,81 @@ public class MainFrame extends JFrame {
         });
         学生管理Button.addActionListener(e -> {
             c.show(centerPanel, "3");
-            showStudents();
+            //学生数据填充表格
+            showStudents(ServiceFactory.getStudentServiceInstance().selectAll());
+            //初始化院系下拉框数据，第一条数据为提示信息
+            departmentJBox.addItem(Department.builder().departmentName("请选择院系").build());
+            List<Department> departmentList = ServiceFactory.getDepartmentServiceInstance().selectAll();
+            for(Department department:departmentList){
+                departmentJBox.addItem(department);
+            }
+            //初始化班级下拉框数据
+            clazzJBox.addItem(Clazz.builder().className("请选择班级").build());
+            List<Clazz> clazzList = ServiceFactory.getClazzServiceInstance().selectAll();
+            for(Clazz clazz :clazzList){
+                clazzJBox.addItem(clazz);
+            }
+            //右侧个人信息面板
+            CustemPanel stuInfoPanel = new CustemPanel("D:\\java-lerning\\img\\OIP.F0cjt8kNfiBG9eGpdZgAxAHaKb.jpg");
+            stuInfoPanel.setPreferredSize(new Dimension(300,600));
+            stuInfoPanel.repaint();
+            studentPanel.add(stuInfoPanel,BorderLayout.EAST);
+            JLabel title = new JLabel("学生信息");
+            title.setFont(new Font("楷体",Font.BOLD,20));
+            title.setForeground(new Color(97,174,239));
+            stuInfoPanel.add(title);
+
+            //院系下拉监听
+            departmentJBox.addItemListener(e1->{
+                if(e1.getStateChange() == ItemEvent.SELECTED){
+                    //排除第一条数据
+                    int index = departmentJBox.getSelectedIndex();
+                    if(index != 0){
+                        Integer depId = departmentJBox.getItemAt(index).getId();
+                        //过滤出这个学院的所有学生
+                        students = ServiceFactory.getStudentServiceInstance().selectByDepId(depId);
+                        showStudents(students);
+                        //根据院系id查询到所有班级
+                        List<Clazz> clazzes = ServiceFactory.getClazzServiceInstance().selectClazzById(depId);
+                        //移除之前的数据重新构建
+                        clazzJBox.removeAllItems();
+                        clazzJBox.addItem(Clazz.builder().className("请选择班级").build());
+                        for (Clazz clazz :clazzes){
+                            clazzJBox.addItem(clazz);
+                        }
+                    }else {
+                        //选中“请选择院系”第一项，复原学生表格数据
+                        students = ServiceFactory.getStudentServiceInstance().selectAll();
+                        showStudents(students);
+                        //复原班级下拉数据
+                        clazzJBox.removeAllItems();
+                        clazzJBox.addItem(Clazz.builder().className("请选择班级").build());
+                        List<Clazz> clazzes = ServiceFactory.getClazzServiceInstance().selectAll();
+                        for(Clazz clazz :clazzes){
+                            clazzJBox.addItem(clazz);
+                        }
+                    }
+                }
+            });
+            //班级下拉监听
+            clazzJBox.addItemListener(e2->{
+                if(e2.getStateChange() == ItemEvent.SELECTED){
+                    int index = clazzJBox.getSelectedIndex();
+                    if(index != 0){
+                        Integer classId = clazzJBox.getItemAt(index).getId();
+                        List<StudentVo> studentVoList  = ServiceFactory.getStudentServiceInstance().selectByClassId(classId);
+                        showStudents(studentVoList);
+                    }else{
+                        //复原数据
+                        clazzJBox.removeAllItems();
+                        clazzJBox.addItem(Clazz.builder().className("请选择班级").build());
+                        List<Clazz> clazzes = ServiceFactory.getClazzServiceInstance().selectAll();
+                        for(Clazz clazz:clazzes){
+                            clazzJBox.addItem(clazz);
+                        }
+                    }
+                }
+            });
         });
         奖惩管理Button.addActionListener(e -> {
             c.show(centerPanel, "4");
@@ -263,35 +335,6 @@ public class MainFrame extends JFrame {
         showClazz(departments);
     }
 
-    private void showCombobox(List<Department> departments) {
-        for (Department department : departments) {
-            depComboBox.addItem(department);
-        }
-    }
-
-    private void showTree(List<Department> departments) {
-        treePanel.removeAll();
-        //左侧树组件到根节点
-        DefaultMutableTreeNode root = new DefaultMutableTreeNode("南京工业职业技术大学");
-        for (Department department : departments) {
-            //院系名称作为一级叶子节点
-            DefaultMutableTreeNode group = new DefaultMutableTreeNode(department.getDepartmentName());
-            //加入根节点，构成一棵树
-            root.add(group);
-            List<Clazz> clazzList = ServiceFactory.getClazzServiceInstance().selectClazzById(department.getId());
-            for (Clazz clazz : clazzList) {
-                DefaultMutableTreeNode node = new DefaultMutableTreeNode(clazz.getClassName());
-                group.add(node);
-            }
-        }
-        //以root为根生成树
-        final JTree tree = new JTree(root);
-        tree.setRowHeight(30);
-        tree.setFont(new Font("微软雅黑", Font.PLAIN, 14));
-        treePanel.add(tree, BorderLayout.CENTER);
-        treePanel.revalidate();
-    }
-
     private void showClazz(List<Department> departments) {
         classContentPanel.removeAll();
         classContentPanel.setLayout(new GridLayout(0, 5, 15, 15));
@@ -355,17 +398,38 @@ public class MainFrame extends JFrame {
 
     }
 
-    private void showStudents() {
-        CustemPanel stuInfoPanel = new CustemPanel("D:\\java-lerning\\img\\OIP.F0cjt8kNfiBG9eGpdZgAxAHaKb.jpg");
-        stuInfoPanel.setPreferredSize(new Dimension(300, 600));
-        JLabel title = new JLabel("学生信息");
-        title.setFont(new Font("楷体", Font.BOLD, 20));
-        title.setForeground(new Color(97, 174, 239));
-        stuInfoPanel.add(title);
-        stuInfoPanel.repaint();
-        studentPanel.add(stuInfoPanel, BorderLayout.EAST);
-        //获得学生列表数据
-        List<StudentVo> students = ServiceFactory.getStudentServiceInstance().selectAll();
+    private void showCombobox(List<Department> departments) {
+        for (Department department : departments) {
+            depComboBox.addItem(department);
+        }
+    }
+
+    private void showTree(List<Department> departments) {
+        treePanel.removeAll();
+        //左侧树组件到根节点
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("南京工业职业技术大学");
+        for (Department department : departments) {
+            //院系名称作为一级叶子节点
+            DefaultMutableTreeNode group = new DefaultMutableTreeNode(department.getDepartmentName());
+            //加入根节点，构成一棵树
+            root.add(group);
+            List<Clazz> clazzList = ServiceFactory.getClazzServiceInstance().selectClazzById(department.getId());
+            for (Clazz clazz : clazzList) {
+                DefaultMutableTreeNode node = new DefaultMutableTreeNode(clazz.getClassName());
+                group.add(node);
+            }
+        }
+        //以root为根生成树
+        final JTree tree = new JTree(root);
+        tree.setRowHeight(30);
+        tree.setFont(new Font("微软雅黑", Font.PLAIN, 14));
+        treePanel.add(tree, BorderLayout.CENTER);
+        treePanel.revalidate();
+    }
+
+    private void showStudents(List<StudentVo> students) {
+        //先移除表格
+        tablePanel.removeAll();
         //创建表格对象
         JTable table = new JTable();
         //创建表格数据模型，并设置给表格
@@ -409,10 +473,17 @@ public class MainFrame extends JFrame {
         JScrollPane scrollPane = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS,
                 ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         tablePanel.add(scrollPane);
+        tablePanel.revalidate();
         //表格内容监听，根据点击得到不同的数据
         table.getSelectionModel().addListSelectionListener(e -> {
             int row = table.getSelectedRow();
-            JOptionPane.showMessageDialog(null, table.getValueAt(row,2).toString() + table.getValueAt(row, 3).toString());
+            StudentVo studentVo = StudentVo.builder()
+                    .className(table.getValueAt(row,2).toString())
+                    .studentName(table.getValueAt(row,3).toString())
+                    .phone(table.getValueAt(row,6).toString())
+                    .address(table.getValueAt(row,5).toString())
+                    .build();
+            System.out.println(studentVo);
         });
     }
 

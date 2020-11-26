@@ -30,4 +30,11 @@ public interface ClazzDao {
      * @throws SQLException sql异常
      */
     int delClazz(int id) throws SQLException;
+
+    /**
+     * 查询所有班级
+     * @return List<clazz>
+     * @throws SQLException sql异常
+     */
+    List<Clazz> selectAll()throws SQLException;
 }

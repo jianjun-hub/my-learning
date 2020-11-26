@@ -21,4 +21,21 @@ public class StudentServiceTest {
 
     }
 
+    @Test
+    public void selectByDepId() {
+        List<StudentVo> studentVoList = studentService.selectByDepId(2);
+        studentVoList.forEach(System.out::println);
+    }
+
+    @Test
+    public void selectByClassId() {
+        List<StudentVo> studentVoList = studentService.selectByClassId(1);
+        studentVoList.forEach(System.out::println);
+    }
+
+    @Test
+    public void selectByKeywords() {
+        List<StudentVo> studentVoList = studentService.selectByKeywords("云南");
+        studentVoList.forEach(System.out::println);
+    }
 }

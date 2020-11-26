@@ -21,4 +21,34 @@ public class StudentDaoTest {
             e.printStackTrace();
         }
     }
+
+    @Test
+    public void selectByDepId() {
+        try {
+            List<StudentVo> list = DaoFactory.getStudentDaoInstance().selectByDepId(1);
+            list.forEach(System.out::println);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void selectByClassId() {
+        try {
+            List<StudentVo> list = DaoFactory.getStudentDaoInstance().selectByClassId(2);
+            list.forEach(System.out::println);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void selectByKeywords() {
+        try {
+            List<StudentVo> list = DaoFactory.getStudentDaoInstance().selectByKeywords("苟");
+            list.forEach(System.out::println);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

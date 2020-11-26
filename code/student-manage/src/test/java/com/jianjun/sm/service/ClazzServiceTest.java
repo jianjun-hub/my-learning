@@ -7,6 +7,7 @@ import com.jianjun.sm.factory.ServiceFactory;
 import org.junit.Test;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -41,5 +42,16 @@ public class ClazzServiceTest {
             e.printStackTrace();
         }
         assertEquals(1,n);
+    }
+
+    @Test
+    public void selectAll() {
+        try {
+            List<Clazz> clazzList;
+            clazzList = ServiceFactory.getClazzServiceInstance().selectAll();
+            clazzList.forEach(System.out::println);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
